@@ -2,7 +2,8 @@
 
 namespace App\Services\Anime;
 
-use App\Services\Anime\Dto\Jikan\Request\Seasonal\SeasonalFilter;
+use App\Services\Anime\Dto\Jikan\Request\Seasonal\SeasonalRequest;
+use App\Services\Anime\Dto\Jikan\Request\Top\TopAnimeRequest;
 
 interface JikanServiceContract
 {
@@ -17,31 +18,21 @@ interface JikanServiceContract
     function getNewest($records): array;
 
     /**
-     * Gets the trending anime.
-     *
-     * @param $records
-     *   The count of the records to be returned.
-     * @return array
-     *   Response from the jikan api.
-     */
-    function getTrending($records): array;
-
-    /**
      * Gets the trending for a specific season.
      *
-     * @param $filter
+     * @param SeasonalRequest $filter
      *   The count of the records to be returned.
      * @return array
      */
-    function getSeasonalNow(SeasonalFilter $filter): array;
+    function getSeasonalNow(SeasonalRequest $filter): array;
 
     /**
-     * Gets the upcoming anime.
+     * Gets top anime.
      *
-     * @param $records
-     *   The count of records to be returned.
+     * @param TopAnimeRequest $request
+     *   The request.
      * @return mixed
      *   The api response.
      */
-    function getUpcoming($records);
+    function getTopAnime(TopAnimeRequest $request): array;
 }

@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Providers\AnimeServiceProvider;
 use App\Services\Anime\AnimeServiceContract;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class AnimeController extends Controller
 {
     public function __construct(private AnimeServiceContract $animeServiceContract)
     {}
 
-    public function seasonNowTrending() : \Illuminate\Http\JsonResponse
+    public function seasonNowTrending() : JsonResponse
     {
         $response = $this->animeServiceContract->getTopFiveTrendingForSeasonNow();
+        return response()->json($response);
+    }
+
+    public function upcomingTrending() : JsonResponse {
+        $response = $this->animeServiceContract->getTopFiveUpcomong();
         return response()->json($response);
     }
 }

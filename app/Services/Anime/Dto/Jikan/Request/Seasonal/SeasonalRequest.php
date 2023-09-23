@@ -2,9 +2,11 @@
 
 namespace App\Services\Anime\Dto\Jikan\Request\Seasonal;
 
-class SeasonalFilter
+use App\Services\Anime\Dto\Jikan\Request\EntryType;
+
+class SeasonalRequest
 {
-    private EntryType $filter = EntryType::MUSIC;
+    private EntryType $filter = EntryType::NONE;
     private bool $sfw = true;
     private bool $unapproved = false;
     private int $page = 0;

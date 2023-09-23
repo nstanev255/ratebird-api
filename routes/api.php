@@ -19,6 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 /**
- * Top 5 trending.
+ * Top 5 trending seasonal.
  */
 Route::get('anime/seasonal/trending', [\App\Http\Controllers\AnimeController::class, 'seasonNowTrending']);
+
+/**
+ * Top 5 upcoming trending.
+ */
+Route::get('anime/upcoming/trending', [\App\Http\Controllers\AnimeController::class, 'upcomingTrending']);

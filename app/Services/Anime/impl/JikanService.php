@@ -2,7 +2,11 @@
 
 namespace App\Services\Anime\impl;
 
-use App\Services\Anime\Dto\Jikan\Request\Seasonal\SeasonalFilter;
+use App\Services\Anime\Dto\Jikan\Request\EntryType;
+use App\Services\Anime\Dto\Jikan\Request\Seasonal\SeasonalRequest;
+use App\Services\Anime\Dto\Jikan\Request\Top\Rating;
+use App\Services\Anime\Dto\Jikan\Request\Top\TopAnimeFilter;
+use App\Services\Anime\Dto\Jikan\Request\Top\TopAnimeRequest;
 use App\Services\Anime\Dto\Jikan\Response\Seasonal\SeasonalResponse;
 use App\Services\Anime\JikanServiceContract;
 use Illuminate\Support\Facades\Http;
@@ -18,10 +22,10 @@ class JikanService implements JikanServiceContract
         return $response->json();
     }
 
-    private function format_seasonal_filter(SeasonalFilter $seasonalFilter) : array {
+    private function format_seasonal_filter(SeasonalRequest $seasonalFilter) : array {
         $filter = [];
 
-        if($seasonalFilter->getFilter() !== null) {
+        if($seasonalFilter->getFilter() !== EntryType::NONE) {
             $filter[]['filter'] = $seasonalFilter->getFilter()->entry_type();
         }
 
@@ -39,24 +43,48 @@ class JikanService implements JikanServiceContract
         return $filter;
     }
 
+    private function format_top_filter(TopAnimeRequest $request) {
+        $filter = [];
+
+        if($request->getRating() !== Rating::NONE) {
+            $filter['rating'] = $request->getRating()->value;
+        }
+
+        if($request->getType() !== EntryType::NONE) {
+            $filter['type'] = $request->getType()->entry_type();
+        }
+
+        if($request->getFilter() !== TopAnimeFilter::NONE) {
+            $filter['filter'] = $request->getFilter()->value;
+        }
+
+        if ($request->getPage() > 0) {
+            $filter['page'] = $request->getPage();
+        }
+
+        if($request->getLimit() > 0) {
+            $filter['limit'] = $request->getLimit();
+        }
+
+        error_log(var_export($filter, true));
+
+        return $filter;
+    }
+
     function getNewest($records): array
     {
         // TODO: Implement getNewest() method.
     }
 
-    function getTrending($records): array
-    {
-        // TODO: Implement getTrending() method.
-    }
-
-    function getSeasonalNow(SeasonalFilter $filter): array
+    function getSeasonalNow(SeasonalRequest $filter): array
     {
         $formatted_filter = $this->format_seasonal_filter($filter);
         return $this->get('/seasons/now', $formatted_filter);
     }
 
-    function getUpcoming($records)
+    function getTopAnime(TopAnimeRequest $request): array
     {
-        // TODO: Implement getUpcoming() method.
+        $formatted_filter = $this->format_top_filter($request);
+        return $this->get('/top/anime', $formatted_filter);
     }
 }
