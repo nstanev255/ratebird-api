@@ -7,7 +7,6 @@ use App\Services\Anime\Dto\Jikan\Request\Seasonal\SeasonalRequest;
 use App\Services\Anime\Dto\Jikan\Request\Top\Rating;
 use App\Services\Anime\Dto\Jikan\Request\Top\TopAnimeFilter;
 use App\Services\Anime\Dto\Jikan\Request\Top\TopAnimeRequest;
-use App\Services\Anime\Dto\Jikan\Response\Seasonal\SeasonalResponse;
 use App\Services\Anime\JikanServiceContract;
 use Illuminate\Support\Facades\Http;
 

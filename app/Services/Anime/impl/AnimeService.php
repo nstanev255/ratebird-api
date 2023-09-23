@@ -42,12 +42,20 @@ class AnimeService implements AnimeServiceContract
         return $anime;
     }
 
-    function transformJikanToMinimalGenres(array $genres)
+    function transformJikanToMinimalGenres(array $genres, array $themes, array $demographics)
     {
         $genres_minimal = [];
 
         foreach ($genres as $genre) {
             $genres_minimal[] = $genre['name'];
+        }
+
+        foreach ($themes as $theme) {
+            $genres_minimal[] = $theme['name'];
+        }
+
+        foreach ($demographics as $demographic) {
+            $genres_minimal[] = $demographic['name'];
         }
 
         return $genres_minimal;
@@ -73,7 +81,7 @@ class AnimeService implements AnimeServiceContract
             if($anime['score'] !== null) {
                 $minimalAnime->rating = $anime['score'] / 2;
             }
-            $minimalAnime->genres = $this->transformJikanToMinimalGenres($anime['genres']);
+            $minimalAnime->genres = $this->transformJikanToMinimalGenres($anime['genres'], $anime['themes'], $anime['demographics']);
 
             $minimalAnimes[] = $minimalAnime;
         }
