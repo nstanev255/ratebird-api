@@ -58,7 +58,7 @@ class AnimeService implements AnimeServiceContract
         return $genres_minimal;
     }
 
-    function transformJikanAnimeMinimal(array $animes)
+    private function transformJikanAnimeMinimal(array $animes) : array
     {
         $minimalAnimes = [];
         foreach ($animes as $anime) {
@@ -67,7 +67,7 @@ class AnimeService implements AnimeServiceContract
             $minimalAnime->description = $anime['synopsis'];
             $minimalAnime->title = $anime['title'];
             $minimalAnime->image = $anime['images']['jpg']['large_image_url'];
-            $minimalAnime->rating = $anime['score'] / 5;
+            $minimalAnime->rating = $anime['score'] / 2;
             $minimalAnime->genres = $this->transformJikanToMinimalGenres($anime['genres']);
 
             $minimalAnimes[] = $minimalAnime;
