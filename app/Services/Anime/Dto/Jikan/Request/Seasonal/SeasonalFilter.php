@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Anime\Dto;
+namespace App\Services\Anime\Dto\Jikan\Request\Seasonal;
 
 class SeasonalFilter
 {

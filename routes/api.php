@@ -18,4 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('anime/top', [\App\Http\Controllers\AnimeController::class, 'findAnime']);
+/**
+ * Top 5 trending.
+ */
+Route::get('anime/seasonal/trending', [\App\Http\Controllers\AnimeController::class, 'seasonNowTrending']);

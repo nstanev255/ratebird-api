@@ -11,9 +11,9 @@ class AnimeController extends Controller
     public function __construct(private AnimeServiceContract $animeServiceContract)
     {}
 
-    public function findAnime() : \Illuminate\Http\JsonResponse
+    public function seasonNowTrending() : \Illuminate\Http\JsonResponse
     {
-        $response = $this->animeServiceContract->getAnime();
+        $response = $this->animeServiceContract->getTopFiveTrendingForSeasonNow();
         return response()->json($response);
     }
 }

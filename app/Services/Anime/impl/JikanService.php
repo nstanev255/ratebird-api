@@ -2,7 +2,8 @@
 
 namespace App\Services\Anime\impl;
 
-use App\Services\Anime\Dto\SeasonalFilter;
+use App\Services\Anime\Dto\Jikan\Request\Seasonal\SeasonalFilter;
+use App\Services\Anime\Dto\Jikan\Response\Seasonal\SeasonalResponse;
 use App\Services\Anime\JikanServiceContract;
 use Illuminate\Support\Facades\Http;
 
@@ -51,9 +52,7 @@ class JikanService implements JikanServiceContract
     function getSeasonalNow(SeasonalFilter $filter): array
     {
         $formatted_filter = $this->format_seasonal_filter($filter);
-        $response = $this->get('/seasons/now', $formatted_filter);
-
-        return $response;
+        return $this->get('/seasons/now', $formatted_filter);
     }
 
     function getUpcoming($records)

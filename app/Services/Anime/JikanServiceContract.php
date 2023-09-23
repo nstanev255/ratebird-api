@@ -2,7 +2,7 @@
 
 namespace App\Services\Anime;
 
-use App\Services\Anime\Dto\SeasonalFilter;
+use App\Services\Anime\Dto\Jikan\Request\Seasonal\SeasonalFilter;
 
 interface JikanServiceContract
 {
