@@ -29,11 +29,11 @@ class JikanService implements JikanServiceContract
             $filter[]['filter'] = $seasonalFilter->getFilter()->entry_type();
         }
 
-        if($seasonalFilter->getLimit() !== 0) {
+        if($seasonalFilter->getLimit() > 0) {
             $filter[]['limit'] = $seasonalFilter->getLimit();
         }
 
-        if($seasonalFilter->getPage() !== 0) {
+        if($seasonalFilter->getPage() > 0) {
             $filter[]['page'] = $seasonalFilter->getPage();
         }
 

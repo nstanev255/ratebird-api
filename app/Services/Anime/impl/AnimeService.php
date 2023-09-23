@@ -58,11 +58,21 @@ class AnimeService implements AnimeServiceContract
         $minimalAnimes = [];
         foreach ($animes as $anime) {
             $minimalAnime = new AnimeMinimal();
-            $minimalAnime->id = $anime['mal_id'];
-            $minimalAnime->description = $anime['synopsis'];
-            $minimalAnime->title = $anime['title'];
-            $minimalAnime->image = $anime['images']['jpg']['large_image_url'];
-            $minimalAnime->rating = $anime['score'] / 2;
+            if($anime['mal_id'] !== null) {
+                $minimalAnime->id = $anime['mal_id'];
+            }
+            if($anime['synopsis'] !== null) {
+                $minimalAnime->description = $anime['synopsis'];
+            }
+            if($anime['title'] !== null) {
+                $minimalAnime->title = $anime['title'];
+            }
+            if($anime['images'] !== null && $anime['images']['jpg'] !== null && $anime['images']['jpg']['large_image_url'] !== null) {
+                $minimalAnime->image = $anime['images']['jpg']['large_image_url'];
+            }
+            if($anime['score'] !== null) {
+                $minimalAnime->rating = $anime['score'] / 2;
+            }
             $minimalAnime->genres = $this->transformJikanToMinimalGenres($anime['genres']);
 
             $minimalAnimes[] = $minimalAnime;
@@ -71,10 +81,13 @@ class AnimeService implements AnimeServiceContract
         return $minimalAnimes;
     }
 
-    function getTopFiveTrendingForSeasonNow()
+    function getTopFiveTrendingForSeasonNow(int $limit)
     {
+        $request = new SeasonalRequest();
+        $request->setLimit($limit);
+
         // Get all the needed anime.
-        $anime = $this->jikanServiceContract->getSeasonalNow(new SeasonalRequest())['data'];
+        $anime = $this->jikanServiceContract->getSeasonalNow($request)['data'];
 
         // Sort them by rank
         usort($anime, function ($a, $b) {
@@ -84,12 +97,12 @@ class AnimeService implements AnimeServiceContract
         return $this->transformJikanAnimeMinimal(array_slice($anime, 0, 8));
     }
 
-    function getTopFiveUpcoming() : array {
+    function getTopFiveUpcoming(int $limit) : array {
         $request = new TopAnimeRequest();
         $request->setFilter(TopAnimeFilter::UPCOMING);
+        $request->setLimit($limit);
 
         $anime = $this->jikanServiceContract->getTopAnime($request)['data'];
-
-        return $this->transformJikanAnimeMinimal(array_slice($anime, 0, 8));
+        return $this->transformJikanAnimeMinimal($anime);
     }
 }

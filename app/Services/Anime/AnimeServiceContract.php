@@ -5,6 +5,6 @@ namespace App\Services\Anime;
 interface AnimeServiceContract
 {
 
-    function getTopFiveTrendingForSeasonNow();
-    function getTopFiveUpcoming();
+    function getTopFiveTrendingForSeasonNow(int $limit);
+    function getTopFiveUpcoming(int $limit);
 }
