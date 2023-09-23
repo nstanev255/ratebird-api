@@ -26,19 +26,19 @@ class JikanService implements JikanServiceContract
         $filter = [];
 
         if($seasonalFilter->getFilter() !== EntryType::NONE) {
-            $filter[]['filter'] = $seasonalFilter->getFilter()->entry_type();
+            $filter['filter'] = $seasonalFilter->getFilter()->entry_type();
         }
 
         if($seasonalFilter->getLimit() > 0) {
-            $filter[]['limit'] = $seasonalFilter->getLimit();
+            $filter['limit'] = $seasonalFilter->getLimit();
         }
 
         if($seasonalFilter->getPage() > 0) {
-            $filter[]['page'] = $seasonalFilter->getPage();
+            $filter['page'] = $seasonalFilter->getPage();
         }
 
-        $filter[]['sfw'] = $seasonalFilter->isSfw();
-        $filter[]['unapproved'] = $seasonalFilter->isUnapproved();
+        $filter['sfw'] = $seasonalFilter->isSfw();
+        $filter['unapproved'] = $seasonalFilter->isUnapproved();
 
         return $filter;
     }
