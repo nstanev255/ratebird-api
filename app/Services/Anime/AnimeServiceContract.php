@@ -6,5 +6,5 @@ interface AnimeServiceContract
 {
 
     function getTopFiveTrendingForSeasonNow();
-    function getTopFiveUpcomong();
+    function getTopFiveUpcoming();
 }

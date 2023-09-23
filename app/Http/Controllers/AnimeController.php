@@ -17,7 +17,7 @@ class AnimeController extends Controller
     }
 
     public function upcomingTrending() : JsonResponse {
-        $response = $this->animeServiceContract->getTopFiveUpcomong();
+        $response = $this->animeServiceContract->getTopFiveUpcoming();
         return response()->json($response);
     }
 }
