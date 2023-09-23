@@ -81,7 +81,7 @@ class AnimeService implements AnimeServiceContract
         return $minimalAnimes;
     }
 
-    function getTopFiveTrendingForSeasonNow(int $limit)
+    function getTopFiveTrendingForSeasonNow(int $limit): array
     {
         $request = new SeasonalRequest();
         $request->setLimit($limit);
@@ -94,7 +94,7 @@ class AnimeService implements AnimeServiceContract
             return $a['rank'] <=> $b['rank'];
         });
 
-        return $this->transformJikanAnimeMinimal(array_slice($anime, 0, 8));
+        return $this->transformJikanAnimeMinimal($anime);
     }
 
     function getTopFiveUpcoming(int $limit) : array {
