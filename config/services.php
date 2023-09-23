@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'jikan' => [
+        'base_url' => 'https://api.jikan.moe/v4'
+    ]
+
 ];
