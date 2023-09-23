@@ -81,7 +81,7 @@ class AnimeService implements AnimeServiceContract
             return $a['rank'] <=> $b['rank'];
         });
 
-        return $this->transformJikanAnimeMinimal(array_slice($anime, 0, 5));
+        return $this->transformJikanAnimeMinimal(array_slice($anime, 0, 8));
     }
 
     function getTopFiveUpcoming() : array {
@@ -90,6 +90,6 @@ class AnimeService implements AnimeServiceContract
 
         $anime = $this->jikanServiceContract->getTopAnime($request)['data'];
 
-        return $this->transformJikanAnimeMinimal(array_slice($anime, 0, 5));
+        return $this->transformJikanAnimeMinimal(array_slice($anime, 0, 8));
     }
 }
