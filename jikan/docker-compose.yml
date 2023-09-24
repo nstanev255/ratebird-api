@@ -1,0 +1,21 @@
+volumes:
+    mongo-data_db: {}
+
+services:
+    jikan:
+        image: jikanme/jikan-rest:nightly-69
+        volumes:
+            - .env:/app/.env
+        ports:
+            - "8081:8080"
+
+    mongodb:
+        image: mongo
+        command: mongod --auth
+        volumes:
+            - mongo-data_db:/data/db
+        ports:
+            - '27017:27017'
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: "${DB_USERNAME}"
+            MONGO_INITDB_ROOT_PASSWORD: "${DB_PASSWORD}"

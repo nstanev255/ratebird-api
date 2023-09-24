@@ -64,7 +64,7 @@ class JikanService implements JikanServiceContract
         if($request->getLimit() > 0) {
             $filter['limit'] = $request->getLimit();
         }
-        
+
         return $filter;
     }
 

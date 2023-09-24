@@ -32,7 +32,7 @@ return [
     ],
 
     'jikan' => [
-        'base_url' => 'https://api.jikan.moe/v4'
+        'base_url' => 'http://localhost/v4'
     ]
 
 ];
