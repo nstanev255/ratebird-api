@@ -32,7 +32,7 @@ return [
     ],
 
     'jikan' => [
-        'base_url' => 'http://localhost/v4'
+        'base_url' => 'http://localhost:8080/v4'
     ]
 
 ];

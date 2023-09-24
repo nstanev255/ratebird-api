@@ -7,7 +7,7 @@ services:
         volumes:
             - .env:/app/.env
         ports:
-            - "8081:8080"
+            - "8080:8080"
 
     mongodb:
         image: mongo
