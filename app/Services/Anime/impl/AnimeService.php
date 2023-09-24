@@ -32,9 +32,6 @@ class AnimeService implements AnimeServiceContract
                 $filter->setPage($page);
                 $next_response = $this->jikanServiceContract->getSeasonalNow($filter);
 
-                if (!isset($next_response['data'])) {
-                    error_log(var_export($next_response, true));
-                }
                 $anime = array_merge($anime, $next_response['data']);
             }
         }
