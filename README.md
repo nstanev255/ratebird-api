@@ -7,6 +7,9 @@ Ratebird-api is the backend server application for the ratebird app.   The rateb
 1. In order for the api to work you firstly need to spin up a jikan instance.
 2. You need to start the ratebird-api
    1. You need to run `composer install` in order to install the needed packages.
+   2. You need to set up a mysql instance. The easiest way is to run `docker compose up` in the root folder of the project.
+   3. You need to run `php artisan migrate`, in order for the tables to come up.
+   4. You need to seed the data with `php artisan db:seed` in order to seed the taxonomies. (Taxonomies are basically enum values)
    2. After the jikan instance is up, you can run `php artisan serve`, in order for the local dev server to be started.
    3. (Optional) You can also setup a apache server and run the app from there.
 ## Jikan
