@@ -102,7 +102,7 @@ class AnimeService implements AnimeServiceContract
         return $this->transformJikanAnimeMinimal($anime);
     }
 
-    function getTopFiveUpcoming(int $limit) : array {
+    function getTopUpcoming(int $limit) : array {
         $request = new TopAnimeRequest();
         $request->setFilter(TopAnimeFilter::UPCOMING);
         $request->setLimit($limit);

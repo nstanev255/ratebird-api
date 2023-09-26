@@ -19,11 +19,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 /**
- * Top 5 trending seasonal.
+ * Top trending seasonal.
  */
 Route::get('anime/seasonal/trending', [\App\Http\Controllers\AnimeController::class, 'seasonNowTrending']);
 
 /**
- * Top 5 upcoming trending.
+ * Top upcoming trending.
  */
 Route::get('anime/upcoming/trending', [\App\Http\Controllers\AnimeController::class, 'upcomingTrending']);
+
+/**
+ * Get taxonomies
+ */
+
+Route::get('taxonomy/{entity}/ratings', [\App\Http\Controllers\TaxonomyController::class, 'getRatings']);
+Route::get('taxonomy/{entity}/sort', [\App\Http\Controllers\TaxonomyController::class, 'getSorts']);
+Route::get('taxonomy/{entity}/status', [\App\Http\Controllers\TaxonomyController::class, 'getStatuses']);
+Route::get('taxonomy/{entity}/type', [\App\Http\Controllers\TaxonomyController::class, 'getTypes']);

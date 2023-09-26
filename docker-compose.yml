@@ -1,0 +1,18 @@
+volumes :
+    db_volume: {}
+
+
+services:
+    mysql:
+        image: mysql
+        container_name: mysql
+        ports:
+            - "${DB_PORT}:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+
+        volumes:
+            - db_volume:/data/db

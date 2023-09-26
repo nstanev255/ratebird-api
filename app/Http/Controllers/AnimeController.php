@@ -30,7 +30,7 @@ class AnimeController extends Controller
             $limit = 0;
         }
 
-        $response = $this->animeServiceContract->getTopFiveUpcoming($limit);
+        $response = $this->animeServiceContract->getTopUpcoming($limit);
         return response()->json($response);
     }
 }

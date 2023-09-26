@@ -42,7 +42,7 @@ class JikanService implements JikanServiceContract
         return $filter;
     }
 
-    private function format_top_filter(TopAnimeRequest $request) {
+    private function format_top_filter(TopAnimeRequest $request): array {
         $filter = [];
 
         if($request->getRating() !== Rating::NONE) {

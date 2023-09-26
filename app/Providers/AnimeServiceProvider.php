@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\Anime\AnimeServiceContract;
 use App\Services\Anime\impl\AnimeService;
+use App\Services\Anime\impl\TaxonomyService;
 use App\Services\Anime\impl\JikanService;
 use App\Services\Anime\JikanServiceContract;
 use Illuminate\Support\ServiceProvider;
@@ -21,6 +22,12 @@ class AnimeServiceProvider extends ServiceProvider
             $jikanService = $this->app->make(JikanServiceContract::class);
 
             return new AnimeService($jikanService);
+        });
+
+        $this->app->bind('App\Services\Anime\TaxonomyServiceContract', function() {
+            $jikanService = $this->app->make(JikanServiceContract::class);
+
+            return new TaxonomyService($jikanService);
         });
     }
 }
