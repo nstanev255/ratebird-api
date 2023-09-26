@@ -4,15 +4,15 @@
 Ratebird-api is the backend server application for the ratebird app.   The ratebird app is used for ranking and following your favorite anime/manga.
 
 ## How to run the app
-1. In order for the api to work you firstly need to spin up a jikan instance.
-2. You need to start the ratebird-api
-   1. Clone the project `git clone https://github.com/nstanev255/ratebird-api`.
-   2. You need to run `composer install` in order to install the needed packages.
-   3. You need to boot up the composer containers with `docker composer up` into the root of the project.
-   4. You need to run `php artisan migrate`, in order for the tables to come up.
-   5. You need to seed the data with `php artisan db:seed` in order to seed the taxonomies. (Taxonomies are basically enum values)
-   6. After the jikan instance is up, you can run `php artisan serve`, in order for the local dev server to be started.
-   7. (Optional) You can also setup a apache server and run the app from there.
+1. Clone the project `git clone https://github.com/nstanev255/ratebird-api`.
+2. Run `composer install` in order to install the needed packages.
+3. Boot up the composer containers with `docker composer up` into the root of the project.
+4. Run `php artisan migrate`, in order for the tables to come up.
+5. Seed the data with `php artisan db:seed` in order to seed the taxonomies. (Taxonomies are basically enum values).
+6. Spin up a [jikan instance](#how-to-run-with-docker), [run remotely](#how-to-run-remotely), or [run manually](#how-to-run-manually).
+6. After jikan is up, you can run `php artisan serve`, in order for the local dev server to be started.
+7. (Optional) You can also setup a apache server and run the app from there.
+
 ## Jikan
 [Jikan](https://github.com/jikan-me/jikan-rest) is an open source **Unofficial** myanimelist api, which is used for resource gathering for this app. It is basically a webcrawler with caching features + elasticsearch/typesense support.
 
