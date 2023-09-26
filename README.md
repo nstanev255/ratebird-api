@@ -7,8 +7,9 @@ Ratebird-api is the backend server application for the ratebird app.   The rateb
 1. In order for the api to work you firstly need to spin up a jikan instance.
 2. You need to run `composer install` in order to install the needed packages.
 3. After the above are done, you can run `php artisan serve`, in order for the local dev server to be started.
+4. (Optional) You can also setup a apache server and run the app from there.
 
-## Jikan ?
+## Jikan
 [Jikan](https://github.com/jikan-me/jikan-rest) is an open source **Unofficial** myanimelist api, which is used for resource gathering for this app. It is basically a webcrawler with caching features + elasticsearch/typesense support.
 
 #### How to run with docker
