@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AnimeController extends Controller
 {
-    public function __construct(private AnimeServiceContract $animeServiceContract)
+    public function __construct(protected AnimeServiceContract $animeServiceContract)
     {
     }
 

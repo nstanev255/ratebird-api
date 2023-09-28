@@ -33,6 +33,6 @@ Route::get('anime/upcoming/trending', [\App\Http\Controllers\AnimeController::cl
  */
 
 Route::get('taxonomy/{entity}/ratings', [\App\Http\Controllers\TaxonomyController::class, 'getRatings']);
-Route::get('taxonomy/{entity}/sort', [\App\Http\Controllers\TaxonomyController::class, 'getSorts']);
-Route::get('taxonomy/{entity}/status', [\App\Http\Controllers\TaxonomyController::class, 'getStatuses']);
-Route::get('taxonomy/{entity}/type', [\App\Http\Controllers\TaxonomyController::class, 'getTypes']);
+Route::get('taxonomy/{entity}/sorts', [\App\Http\Controllers\TaxonomyController::class, 'getSorts']);
+Route::get('taxonomy/{entity}/statuses', [\App\Http\Controllers\TaxonomyController::class, 'getStatuses']);
+Route::get('taxonomy/{entity}/types', [\App\Http\Controllers\TaxonomyController::class, 'getTypes']);

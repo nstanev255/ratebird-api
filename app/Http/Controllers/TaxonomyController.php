@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Anime\TaxonomyServiceContract;
-use App\Services\Anime\impl\TaxonomyService;
+use App\Services\Taxonomy\TaxonomyServiceContract;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class TaxonomyController extends Controller
 {
@@ -13,32 +11,30 @@ class TaxonomyController extends Controller
     {
     }
 
-    public function getTypes(): JsonResponse {
-        $types = $this->taxonomyService->getTypes();
-
-        return response()->json($types);
+    public function getTypes(string $entity): JsonResponse {
+        return $this->taxonomyService->getTypes($entity);
     }
 
-    public function getStatuses(): JsonResponse {
-        $statuses = $this->taxonomyService->getStatuses();
+    public function getStatuses(string $entity): JsonResponse {
+        $statuses = $this->taxonomyService->getStatuses($entity);
 
         return response()->json($statuses);
     }
 
-    public function getRatings() : JsonResponse {
-        $ratings = $this->taxonomyService->getRatings();
+    public function getRatings(string $entity) : JsonResponse {
+        $ratings = $this->taxonomyService->getRatings($entity);
 
         return response()->json($ratings);
     }
 
-    public function getGenres() : JsonResponse {
-        $genres = $this->taxonomyService->getGenres();
+    public function getGenres(string $entity) : JsonResponse {
+        $genres = $this->taxonomyService->getGenres($entity);
 
         return response()->json($genres);
     }
 
-    public function getSorts() : JsonResponse {
-        $sorts = $this->taxonomyService->getSorts();
+    public function getSorts(string $entity) : JsonResponse {
+        $sorts = $this->taxonomyService->getSorts($entity);
 
         return response()->json($sorts);
     }

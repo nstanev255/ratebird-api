@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TaxonomySort extends Model
 {
-    use HasFactory;
-
     protected $table = 'taxonomy_sort';
     protected $primaryKey = 'id';
 

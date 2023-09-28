@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TaxonomyType extends Model
 {
-    use HasFactory;
-
     protected $table = 'taxonomy_type';
     protected $primaryKey = 'id';
 
     public function entity(): BelongsTo {
-        return $this->belongsTo(TaxonomyEntity::class, 'entity_type');
+        return $this->belongsTo(TaxonomyEntity::class, 'type_entity');
     }
 }

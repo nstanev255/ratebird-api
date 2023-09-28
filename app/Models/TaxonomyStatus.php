@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TaxonomyStatus extends Model
 {
-    use HasFactory;
-
     protected $table = 'taxonomy_status';
     protected $primaryKey = 'id';
 

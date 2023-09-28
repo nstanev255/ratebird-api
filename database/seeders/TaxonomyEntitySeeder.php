@@ -14,7 +14,7 @@ class TaxonomyEntitySeeder extends Seeder
     public function run(): void
     {
         DB::table('taxonomy_entity')->insert([
-            ['id' => 1, 'entity_type' => 'Anime']
+            ['id' => 1, 'entity_type' => 'anime']
         ]);
     }
 }

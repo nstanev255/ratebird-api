@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class TaxonomyEntity extends Model
 {
-    use HasFactory;
-
     protected $table = 'taxonomy_entity';
     protected $primaryKey = 'id';
 }

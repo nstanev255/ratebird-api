@@ -12,6 +12,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(provider: AnimeServiceProvider::class);
+        $this->app->register(provider: TaxonomyServiceProvider::class);
     }
 
     /**
