@@ -11,31 +11,47 @@ class TaxonomyController extends Controller
     {
     }
 
-    public function getTypes(string $entity): JsonResponse {
-        return $this->taxonomyService->getTypes($entity);
+    public function getTypes(string $entity): JsonResponse
+    {
+        try {
+            return response()->json($this->taxonomyService->getTypes($entity));
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+        }
     }
 
-    public function getStatuses(string $entity): JsonResponse {
-        $statuses = $this->taxonomyService->getStatuses($entity);
-
-        return response()->json($statuses);
+    public function getStatuses(string $entity): JsonResponse
+    {
+        try {
+            return response()->json($this->taxonomyService->getStatuses($entity));
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+        }
+    }
+    public function getRatings(string $entity): JsonResponse
+    {
+        try {
+            return response()->json($this->taxonomyService->getRatings($entity));
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+        }
     }
 
-    public function getRatings(string $entity) : JsonResponse {
-        $ratings = $this->taxonomyService->getRatings($entity);
-
-        return response()->json($ratings);
+    public function getGenres(string $entity): JsonResponse
+    {
+        try {
+            return response()->json($this->taxonomyService->getGenres($entity));
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+        }
     }
 
-    public function getGenres(string $entity) : JsonResponse {
-        $genres = $this->taxonomyService->getGenres($entity);
-
-        return response()->json($genres);
-    }
-
-    public function getSorts(string $entity) : JsonResponse {
-        $sorts = $this->taxonomyService->getSorts($entity);
-
-        return response()->json($sorts);
+    public function getSorts(string $entity): JsonResponse
+    {
+        try {
+            return response()->json($this->taxonomyService->getSorts($entity));
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+        }
     }
 }

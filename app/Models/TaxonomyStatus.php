@@ -12,6 +12,6 @@ class TaxonomyStatus extends Model
     protected $primaryKey = 'id';
 
     public function entity(): BelongsTo {
-        return $this->belongsTo(TaxonomyEntity::class, 'entity_status');
+        return $this->belongsTo(TaxonomyEntity::class, 'status_entity');
     }
 }

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface TaxonomyTypeRepositoryContract
 {
-    public function findAllByEntityTypeId(int $id): Collection;
+    public function findAllByEntityTypeId(int $id): Collection | null;
 }
