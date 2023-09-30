@@ -35,4 +35,11 @@ interface JikanServiceContract
      *   The api response.
      */
     function getTopAnime(TopAnimeRequest $request): array;
+
+    /**
+     * Gets the all the genres for anime.
+     *
+     * @return array
+     */
+    function getAnimeGenres(): array;
 }

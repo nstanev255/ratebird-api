@@ -2,6 +2,7 @@
 
 namespace App\Services\Taxonomy\impl;
 
+use App\Models\Dto\Entity;
 use App\Repository\Taxonomy\TaxonomyEntityRepositoryContract;
 use App\Repository\Taxonomy\TaxonomyRatingRepositoryContract;
 use App\Repository\Taxonomy\TaxonomySortRepositoryContract;
@@ -107,16 +108,38 @@ class TaxonomyService implements TaxonomyServiceContract
     /**
      * Gets all the anime genres.
      *
+     * @param string $entity_name
      * @return array
+     * @throws Exception
      */
     public function getGenres(string $entity_name): array
     {
-        // TODO: Implement getGenres() method.
+        $entity = Entity::tryFrom(strtolower($entity_name));
+        if(!$entity) {
+            throw new Exception('not found', 404);
+        }
+
+        $genres = [];
+        switch ($entity) {
+            case Entity::ANIME:
+                $genres = $this->jikanService->getAnimeGenres()['data'];
+                break;
+            case Entity::MANGA:
+                // TODO: Implement manga handling for genres.
+                break;
+        }
+
+        if(count($genres) === 0) {
+            throw new Exception('not found', 404);
+        }
+
+        return $genres;
     }
 
     /**
      * Gets all the sort types.
      *
+     * @param string $entity_name
      * @return array
      * @throws Exception
      */

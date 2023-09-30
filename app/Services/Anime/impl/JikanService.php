@@ -84,4 +84,8 @@ class JikanService implements JikanServiceContract
         $formatted_filter = $this->format_top_filter($request);
         return $this->get('/top/anime', $formatted_filter);
     }
+
+    public function getAnimeGenres(): array {
+       return $this->get('/genres/anime', []);
+    }
 }

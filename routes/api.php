@@ -36,3 +36,4 @@ Route::get('taxonomy/{entity}/ratings', [\App\Http\Controllers\TaxonomyControlle
 Route::get('taxonomy/{entity}/sorts', [\App\Http\Controllers\TaxonomyController::class, 'getSorts']);
 Route::get('taxonomy/{entity}/statuses', [\App\Http\Controllers\TaxonomyController::class, 'getStatuses']);
 Route::get('taxonomy/{entity}/types', [\App\Http\Controllers\TaxonomyController::class, 'getTypes']);
+Route::get('taxonomy/{entity}/genres', [\App\Http\Controllers\TaxonomyController::class, 'getGenres']);
