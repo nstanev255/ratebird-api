@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Repository\Taxonomy\impl\TaxonomyEntityRepository;
+use App\Repository\Taxonomy\impl\TaxonomyRatingRepository;
 use App\Repository\Taxonomy\impl\TaxonomyStatusRepository;
 use App\Repository\Taxonomy\impl\TaxonomyTypeRepository;
 use App\Repository\Taxonomy\TaxonomyEntityRepositoryContract;
+use App\Repository\Taxonomy\TaxonomyRatingRepositoryContract;
 use App\Repository\Taxonomy\TaxonomyStatusRepositoryContract;
 use App\Repository\Taxonomy\TaxonomyTypeRepositoryContract;
 use App\Services\Anime\JikanServiceContract;
@@ -19,6 +21,7 @@ class TaxonomyServiceProvider extends ServiceProvider
         TaxonomyEntityRepositoryContract::class => TaxonomyEntityRepository::class,
         TaxonomyTypeRepositoryContract::class => TaxonomyTypeRepository::class,
         TaxonomyStatusRepositoryContract::class => TaxonomyStatusRepository::class,
+        TaxonomyRatingRepositoryContract::class => TaxonomyRatingRepository::class
     ];
     /**
      * Register services.
@@ -30,8 +33,9 @@ class TaxonomyServiceProvider extends ServiceProvider
             $repo = $this->app->make(TaxonomyEntityRepositoryContract::class);
             $repo_type = $this->app->make(TaxonomyTypeRepositoryContract::class);
             $repo_status = $this->app->make(TaxonomyStatusRepositoryContract::class);
+            $repo_rating = $this->app->make(TaxonomyRatingRepository::class);
 
-            return new TaxonomyService($jikan, $repo, $repo_type, $repo_status);
+            return new TaxonomyService($jikan, $repo, $repo_type, $repo_status, $repo_rating);
         });
     }
 }

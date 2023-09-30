@@ -2,17 +2,17 @@
 
 namespace App\Repository\Taxonomy\impl;
 
-use App\Models\TaxonomyStatus;
-use App\Repository\Taxonomy\TaxonomyStatusRepositoryContract;
+use App\Models\TaxonomyRating;
+use App\Repository\Taxonomy\TaxonomyRatingRepositoryContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
-class TaxonomyStatusRepository implements TaxonomyStatusRepositoryContract
+class TaxonomyRatingRepository implements TaxonomyRatingRepositoryContract
 {
 
     function findAllByEntityId(int $id): Collection
     {
-        return TaxonomyStatus::query()->whereHas('entity', function (Builder $query) use ($id) {
+        return TaxonomyRating::query()->whereHas('entity', function (Builder $query) use ($id) {
             $query->where('id', '=', $id);
         })->get();
     }

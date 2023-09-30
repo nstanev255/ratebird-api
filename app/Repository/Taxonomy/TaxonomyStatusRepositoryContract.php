@@ -4,5 +4,5 @@ namespace App\Repository\Taxonomy;
 
 interface TaxonomyStatusRepositoryContract
 {
-    function findOneByEntityId(int $id);
+    function findAllByEntityId(int $id);
 }
