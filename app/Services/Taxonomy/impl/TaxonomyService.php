@@ -4,6 +4,7 @@ namespace App\Services\Taxonomy\impl;
 
 use App\Repository\Taxonomy\TaxonomyEntityRepositoryContract;
 use App\Repository\Taxonomy\TaxonomyRatingRepositoryContract;
+use App\Repository\Taxonomy\TaxonomySortRepositoryContract;
 use App\Repository\Taxonomy\TaxonomyStatusRepositoryContract;
 use App\Repository\Taxonomy\TaxonomyTypeRepositoryContract;
 use App\Services\Anime\JikanServiceContract;
@@ -20,6 +21,7 @@ class TaxonomyService implements TaxonomyServiceContract
         protected TaxonomyTypeRepositoryContract   $typeRepository,
         protected TaxonomyStatusRepositoryContract $statusRepository,
         protected TaxonomyRatingRepositoryContract $ratingRepository,
+        protected TaxonomySortRepositoryContract $sortRepository,
     )
     {
     }
@@ -116,9 +118,20 @@ class TaxonomyService implements TaxonomyServiceContract
      * Gets all the sort types.
      *
      * @return array
+     * @throws Exception
      */
     public function getSorts(string $entity_name): array
     {
-        // TODO: Implement getSort() method.
+        $entity = $this->entityRepository->findOneByEntityName(strtolower($entity_name));
+        if(!$entity) {
+            throw new Exception('could not find', 404);
+        }
+
+        $statuses = $this->sortRepository->findAllByEntityId($entity->id);
+        if($statuses->isEmpty()) {
+            throw new Exception('could not find', 404);
+        }
+
+        return $statuses->all();
     }
 }

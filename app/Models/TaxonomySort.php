@@ -12,6 +12,6 @@ class TaxonomySort extends Model
     protected $primaryKey = 'id';
 
     public function entity(): BelongsTo {
-        return $this->belongsTo(TaxonomyEntity::class, 'entity_sort');
+        return $this->belongsTo(TaxonomyEntity::class, 'sort_entity');
     }
 }
