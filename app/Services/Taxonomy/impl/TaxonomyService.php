@@ -11,7 +11,6 @@ use App\Repository\Taxonomy\TaxonomyTypeRepositoryContract;
 use App\Services\Anime\JikanServiceContract;
 use App\Services\Taxonomy\TaxonomyServiceContract;
 use Exception;
-use Illuminate\Http\JsonResponse;
 
 class TaxonomyService implements TaxonomyServiceContract
 {
@@ -25,18 +24,6 @@ class TaxonomyService implements TaxonomyServiceContract
         protected TaxonomySortRepositoryContract $sortRepository,
     )
     {
-    }
-
-    public function normalizeTaxonomy(array $taxonomies): array {
-        $normalizeds = [];
-
-        foreach ($taxonomies as $taxonomy) {
-            $normalized['name'] = $taxonomy->name;
-            $normalized['id'] = $taxonomy->id;
-            $normalizeds[][] = $normalized;
-        }
-
-        return $normalizeds;
     }
 
     /**

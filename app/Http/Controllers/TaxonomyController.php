@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\Taxonomy\TaxonomyServiceContract;
+use App\Util\TaxonomyUtils;
 use Illuminate\Http\JsonResponse;
 
 class TaxonomyController extends Controller
@@ -14,7 +15,7 @@ class TaxonomyController extends Controller
     public function getTypes(string $entity): JsonResponse
     {
         try {
-            return response()->json($this->taxonomyService->getTypes($entity));
+            return response()->json(TaxonomyUtils::normalizeTaxonomy($this->taxonomyService->getTypes($entity)));
         } catch (\Exception $exception) {
             return response()->json(['message' => $exception->getMessage()], $exception->getCode());
         }
@@ -23,7 +24,7 @@ class TaxonomyController extends Controller
     public function getStatuses(string $entity): JsonResponse
     {
         try {
-            return response()->json($this->taxonomyService->getStatuses($entity));
+            return response()->json(TaxonomyUtils::normalizeTaxonomy($this->taxonomyService->getStatuses($entity)));
         } catch (\Exception $exception) {
             return response()->json(['message' => $exception->getMessage()], $exception->getCode());
         }
@@ -31,7 +32,7 @@ class TaxonomyController extends Controller
     public function getRatings(string $entity): JsonResponse
     {
         try {
-            return response()->json($this->taxonomyService->getRatings($entity));
+            return response()->json(TaxonomyUtils::normalizeTaxonomy($this->taxonomyService->getRatings($entity)));
         } catch (\Exception $exception) {
             return response()->json(['message' => $exception->getMessage()], $exception->getCode());
         }
@@ -40,7 +41,7 @@ class TaxonomyController extends Controller
     public function getGenres(string $entity): JsonResponse
     {
         try {
-            return response()->json($this->taxonomyService->getGenres($entity));
+            return response()->json(TaxonomyUtils::normalizeJikanGenres($this->taxonomyService->getGenres($entity)));
         } catch (\Exception $exception) {
             return response()->json(['message' => $exception->getMessage()], $exception->getCode());
         }
