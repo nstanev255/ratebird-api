@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\Taxonomy\TaxonomyServiceContract;
+use App\Util\ResponseUtills;
 use App\Util\TaxonomyUtils;
 use Illuminate\Http\JsonResponse;
 
@@ -17,7 +18,7 @@ class TaxonomyController extends Controller
         try {
             return response()->json(TaxonomyUtils::normalizeTaxonomy($this->taxonomyService->getTypes($entity)));
         } catch (\Exception $exception) {
-            return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+            return ResponseUtills::handleErrorResponse($exception->getMessage(), $exception->getCode());
         }
     }
 
@@ -26,7 +27,7 @@ class TaxonomyController extends Controller
         try {
             return response()->json(TaxonomyUtils::normalizeTaxonomy($this->taxonomyService->getStatuses($entity)));
         } catch (\Exception $exception) {
-            return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+            return ResponseUtills::handleErrorResponse($exception->getMessage(), $exception->getCode());
         }
     }
     public function getRatings(string $entity): JsonResponse
@@ -34,7 +35,7 @@ class TaxonomyController extends Controller
         try {
             return response()->json(TaxonomyUtils::normalizeTaxonomy($this->taxonomyService->getRatings($entity)));
         } catch (\Exception $exception) {
-            return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+            return ResponseUtills::handleErrorResponse($exception->getMessage(), $exception->getCode());
         }
     }
 
@@ -43,7 +44,7 @@ class TaxonomyController extends Controller
         try {
             return response()->json(TaxonomyUtils::normalizeJikanGenres($this->taxonomyService->getGenres($entity)));
         } catch (\Exception $exception) {
-            return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+            return ResponseUtills::handleErrorResponse($exception->getMessage(), $exception->getCode());
         }
     }
 
@@ -52,7 +53,7 @@ class TaxonomyController extends Controller
         try {
             return response()->json($this->taxonomyService->getSorts($entity));
         } catch (\Exception $exception) {
-            return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+            return ResponseUtills::handleErrorResponse($exception->getMessage(), $exception->getCode());
         }
     }
 }

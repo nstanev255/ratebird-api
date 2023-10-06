@@ -10,6 +10,7 @@ use App\Repository\Taxonomy\TaxonomyStatusRepositoryContract;
 use App\Repository\Taxonomy\TaxonomyTypeRepositoryContract;
 use App\Services\Anime\JikanServiceContract;
 use App\Services\Taxonomy\TaxonomyServiceContract;
+use App\Util\TaxonomyUtils;
 use Exception;
 
 class TaxonomyService implements TaxonomyServiceContract
@@ -45,7 +46,7 @@ class TaxonomyService implements TaxonomyServiceContract
             throw new Exception('could not find', 404);
         }
 
-        return $this->normalizeTaxonomy($types->all());
+        return TaxonomyUtils::normalizeTaxonomy($types->all());
     }
 
     /**

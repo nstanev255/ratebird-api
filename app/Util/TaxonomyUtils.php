@@ -20,8 +20,8 @@ class TaxonomyUtils
         $normalizeds = [];
 
         foreach ($taxonomies as $taxonomy) {
-            $normalized['name'] = $taxonomy->name;
-            $normalized['id'] = $taxonomy->id;
+            $normalized['name'] = $taxonomy['name'];
+            $normalized['id'] = $taxonomy['id'];
             $normalizeds[] = $normalized;
         }
 
