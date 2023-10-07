@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Taxonomy\impl;
+namespace App\Services\impl;
 
 use App\Models\Dto\Entity;
 use App\Repository\Taxonomy\TaxonomyEntityRepositoryContract;
@@ -8,8 +8,8 @@ use App\Repository\Taxonomy\TaxonomyRatingRepositoryContract;
 use App\Repository\Taxonomy\TaxonomySortRepositoryContract;
 use App\Repository\Taxonomy\TaxonomyStatusRepositoryContract;
 use App\Repository\Taxonomy\TaxonomyTypeRepositoryContract;
-use App\Services\Anime\JikanServiceContract;
-use App\Services\Taxonomy\TaxonomyServiceContract;
+use App\Services\JikanServiceContract;
+use App\Services\TaxonomyServiceContract;
 use App\Util\TaxonomyUtils;
 use Exception;
 

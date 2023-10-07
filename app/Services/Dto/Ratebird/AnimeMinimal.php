@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Anime\Dto\Ratebird;
+namespace App\Services\Dto\Ratebird;
 
 class AnimeMinimal
 {

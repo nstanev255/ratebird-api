@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Anime\AnimeServiceContract;
+use App\Services\AnimeServiceContract;
+use App\Services\FilterServiceContract;
+use App\Util\FilterUtils;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class AnimeController extends Controller
 {
-    public function __construct(protected AnimeServiceContract $animeServiceContract)
+    public function __construct(
+        protected AnimeServiceContract $animeServiceContract,
+        protected FilterServiceContract $filterServiceContract
+    )
     {
     }
 
@@ -31,6 +36,13 @@ class AnimeController extends Controller
         }
 
         $response = $this->animeServiceContract->getTopUpcoming($limit);
+        return response()->json($response);
+    }
+
+    public function searchAnime(Request $request): JsonResponse {
+        $filter = $this->filterServiceContract->getJikanAnimeSearchFilter($request);
+        $response = $this->animeServiceContract->search($filter);
+
         return response()->json($response);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Anime\Dto\Jikan\Request\Top;
+namespace App\Services\Dto\Jikan\Request\Top;
 
 enum TopAnimeFilter : string
 {

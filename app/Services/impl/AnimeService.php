@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\Anime\impl;
+namespace App\Services\impl;
 
-use App\Services\Anime\AnimeServiceContract;
-use App\Services\Anime\Dto\Jikan\Request\Seasonal\SeasonalRequest;
-use App\Services\Anime\Dto\Jikan\Request\Top\TopAnimeFilter;
-use App\Services\Anime\Dto\Jikan\Request\Top\TopAnimeRequest;
-use App\Services\Anime\Dto\Ratebird\AnimeMinimal;
-use App\Services\Anime\JikanServiceContract;
+use App\Services\AnimeServiceContract;
+use App\Services\Dto\Jikan\Request\Seasonal\SeasonalRequest;
+use App\Services\Dto\Jikan\Request\Top\TopAnimeFilter;
+use App\Services\Dto\Jikan\Request\Top\TopAnimeRequest;
+use App\Services\Dto\Ratebird\AnimeMinimal;
+use App\Services\JikanServiceContract;
 
 class AnimeService implements AnimeServiceContract
 {
@@ -109,5 +109,10 @@ class AnimeService implements AnimeServiceContract
 
         $anime = $this->jikanServiceContract->getTopAnime($request)['data'];
         return $this->transformJikanAnimeMinimal($anime);
+    }
+
+    function search(array $filter): array
+    {
+        return $this->jikanServiceContract->searchAnime($filter);
     }
 }

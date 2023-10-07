@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Services\Taxonomy;
-
-use Illuminate\Http\JsonResponse;
+namespace App\Services;
 
 interface TaxonomyServiceContract
 {

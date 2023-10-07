@@ -12,8 +12,8 @@ use App\Repository\Taxonomy\TaxonomyRatingRepositoryContract;
 use App\Repository\Taxonomy\TaxonomySortRepositoryContract;
 use App\Repository\Taxonomy\TaxonomyStatusRepositoryContract;
 use App\Repository\Taxonomy\TaxonomyTypeRepositoryContract;
-use App\Services\Anime\JikanServiceContract;
-use App\Services\Taxonomy\impl\TaxonomyService;
+use App\Services\impl\TaxonomyService;
+use App\Services\JikanServiceContract;
 use Illuminate\Support\ServiceProvider;
 
 class TaxonomyServiceProvider extends ServiceProvider
@@ -31,7 +31,7 @@ class TaxonomyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('App\Services\Taxonomy\TaxonomyServiceContract', function() {
+        $this->app->bind('App\Services\TaxonomyServiceContract', function() {
             $jikan = $this->app->make(JikanServiceContract::class);
             $repo = $this->app->make(TaxonomyEntityRepositoryContract::class);
             $repo_type = $this->app->make(TaxonomyTypeRepositoryContract::class);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Anime\Dto\Jikan\Request;
+namespace App\Services\Dto\Jikan\Request;
 
 enum EntryType : string
 {

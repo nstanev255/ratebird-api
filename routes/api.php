@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnimeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +30,13 @@ Route::get('anime/seasonal/trending', [\App\Http\Controllers\AnimeController::cl
 Route::get('anime/upcoming/trending', [\App\Http\Controllers\AnimeController::class, 'upcomingTrending']);
 
 /**
+ * Search anime.
+ */
+Route::get('anime/search', [AnimeController::class, 'searchAnime']);
+
+/**
  * Get taxonomies
  */
-
 Route::get('taxonomy/{entity}/ratings', [\App\Http\Controllers\TaxonomyController::class, 'getRatings']);
 Route::get('taxonomy/{entity}/sorts', [\App\Http\Controllers\TaxonomyController::class, 'getSorts']);
 Route::get('taxonomy/{entity}/statuses', [\App\Http\Controllers\TaxonomyController::class, 'getStatuses']);

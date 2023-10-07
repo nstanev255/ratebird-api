@@ -32,6 +32,8 @@ return [
     ],
 
     'jikan' => [
+        'default_first_page' => 1,
+        'default_page_limit' => 10,
         'base_url' => 'http://localhost:8000/v4'
     ]
 

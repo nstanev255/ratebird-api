@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\Anime\impl;
+namespace App\Services\impl;
 
-use App\Services\Anime\Dto\Jikan\Request\EntryType;
-use App\Services\Anime\Dto\Jikan\Request\Seasonal\SeasonalRequest;
-use App\Services\Anime\Dto\Jikan\Request\Top\Rating;
-use App\Services\Anime\Dto\Jikan\Request\Top\TopAnimeFilter;
-use App\Services\Anime\Dto\Jikan\Request\Top\TopAnimeRequest;
-use App\Services\Anime\JikanServiceContract;
+use App\Services\Dto\Jikan\Request\EntryType;
+use App\Services\Dto\Jikan\Request\Seasonal\SeasonalRequest;
+use App\Services\Dto\Jikan\Request\Top\Rating;
+use App\Services\Dto\Jikan\Request\Top\TopAnimeFilter;
+use App\Services\Dto\Jikan\Request\Top\TopAnimeRequest;
+use App\Services\JikanServiceContract;
 use Illuminate\Support\Facades\Http;
 
 class JikanService implements JikanServiceContract
@@ -87,5 +87,10 @@ class JikanService implements JikanServiceContract
 
     public function getAnimeGenres(): array {
        return $this->get('/genres/anime', []);
+    }
+
+    function searchAnime(array $filter): array
+    {
+        return $this->get('/anime/', $filter);
     }
 }

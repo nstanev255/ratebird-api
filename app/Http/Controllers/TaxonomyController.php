@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Taxonomy\TaxonomyServiceContract;
+use App\Services\TaxonomyServiceContract;
 use App\Util\ResponseUtills;
 use App\Util\TaxonomyUtils;
 use Illuminate\Http\JsonResponse;

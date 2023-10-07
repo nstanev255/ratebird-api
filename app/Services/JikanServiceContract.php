@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\Anime;
+namespace App\Services;
 
-use App\Services\Anime\Dto\Jikan\Request\Seasonal\SeasonalRequest;
-use App\Services\Anime\Dto\Jikan\Request\Top\TopAnimeRequest;
+use App\Services\Dto\Jikan\Request\Seasonal\SeasonalRequest;
+use App\Services\Dto\Jikan\Request\Top\TopAnimeRequest;
 
 interface JikanServiceContract
 {
@@ -42,4 +42,15 @@ interface JikanServiceContract
      * @return array
      */
     function getAnimeGenres(): array;
+
+    /**
+     * Search anime by filter.
+     *
+     * @param array $filter
+     *   The search filter.
+     *   TODO: Describe the search params & how to use them.
+     * @return array
+     *   The response from the api.
+     */
+    function searchAnime(array $filter): array;
 }

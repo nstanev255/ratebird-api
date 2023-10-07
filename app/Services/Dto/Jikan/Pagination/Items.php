@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Anime\Dto\Jikan\Pagination;
+namespace App\Services\Dto\Jikan\Pagination;
 
 class Items
 {

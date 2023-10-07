@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Anime\Dto\Jikan\Request\Top;
+namespace App\Services\Dto\Jikan\Request\Top;
 
-use App\Services\Anime\Dto\Jikan\Request\EntryType;
+use App\Services\Dto\Jikan\Request\EntryType;
 
 class TopAnimeRequest
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Anime\Dto\Jikan\Response\Seasonal;
+namespace App\Services\Dto\Jikan\Response\Seasonal;
 
-use App\Services\Anime\Dto\Jikan\Pagination\Pagination;
+use App\Services\Dto\Jikan\Pagination\Pagination;
 
 class SeasonalResponse
 {
