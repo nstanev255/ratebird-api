@@ -2,12 +2,12 @@ volumes:
     mongo-data_db: {}
 
 services:
-    jikan:
-        image: jikanme/jikan-rest:nightly-69
-        volumes:
-            - .env:/app/.env
-        ports:
-            - "8080:8080"
+#    jikan:
+#        image: jikanme/jikan-rest:nightly-69
+#        volumes:
+#            - .env:/app/.env
+#        ports:
+#            - "8080:8080"
 
     mongodb:
         image: mongo
