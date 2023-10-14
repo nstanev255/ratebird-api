@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Services\AnimeServiceContract;
 use App\Services\FilterServiceContract;
-use App\Util\FilterUtils;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

@@ -113,6 +113,11 @@ class AnimeService implements AnimeServiceContract
 
     function search(array $filter): array
     {
-        return $this->jikanServiceContract->searchAnime($filter);
+        $response = $this->jikanServiceContract->searchAnime($filter);
+
+        return [
+            'data'=> $this->transformJikanAnimeMinimal($response['data']),
+            'pagination' => $response['pagination']
+        ];
     }
 }
